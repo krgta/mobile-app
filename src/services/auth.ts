@@ -8,7 +8,6 @@ export async function login(
       password: string
 ) : Promise<AuthResponse> {
       const response = await api.post("/auth/login", {email, password});
-      console.log(response.config);
       return response.data;
 }
 

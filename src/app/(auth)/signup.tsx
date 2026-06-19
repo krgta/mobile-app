@@ -107,8 +107,17 @@ export default function SignUpScreen() {
 }
 
 const styles = StyleSheet.create({
-  keyboardView: { flex: 1, backgroundColor: "#faf8f5" },
-  scroll: { flexGrow: 1, justifyContent: "center", padding: 20 },
+  keyboardView: { 
+    flex: 1, 
+    backgroundColor: "#faf8f5" 
+  },
+
+  scroll: { 
+    flexGrow: 1, 
+    justifyContent: "center", 
+    padding: 20 
+  },
+
   card: {
     backgroundColor: "#fff",
     borderRadius: 24,
@@ -119,8 +128,20 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
     elevation: 4,
   },
-  title: { fontSize: 26, fontWeight: "700", marginBottom: 6, color: "#1a1816" },
-  subtitle: { fontSize: 14, color: "#8b8480", marginBottom: 28 },
+
+  title: { 
+    fontSize: 26, 
+    fontWeight: "700", 
+    marginBottom: 6, 
+    color: "#1a1816" 
+  },
+
+  subtitle: { 
+    fontSize: 14, 
+    color: "#8b8480", 
+    marginBottom: 28 
+  },
+
   label: {
     fontSize: 13,
     fontWeight: "600",
@@ -128,6 +149,7 @@ const styles = StyleSheet.create({
     marginBottom: 6,
     marginTop: 14,
   },
+
   input: {
     height: 48,
     borderWidth: 1,
@@ -138,10 +160,23 @@ const styles = StyleSheet.create({
     color: "#1a1816",
     backgroundColor: "#f5f3f0",
   },
-  passwordRow: { flexDirection: "row", alignItems: "center", gap: 8 },
-  eyeBtn: { padding: 8 },
-  eyeText: { fontSize: 18 },
-  error: { color: "#c0392b", fontSize: 13, marginTop: 8 },
+
+  passwordRow: { 
+    flexDirection: "row", 
+    alignItems: "center", 
+    gap: 8 
+  },
+
+  eyeBtn: { 
+    padding: 8 
+  },
+  
+  error: { 
+    color: "#c0392b", 
+    fontSize: 13, 
+    marginTop: 8 
+  },
+
   btn: {
     backgroundColor: "#2d5a4f",
     borderRadius: 999,
@@ -150,13 +185,26 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 24,
   },
-  btnDisabled: { opacity: 0.5 },
-  btnText: { color: "#fff", fontSize: 15, fontWeight: "600" },
+
+  btnDisabled: { 
+    opacity: 0.5 
+  },
+
+  btnText: { 
+    color: "#fff", 
+    fontSize: 15, 
+    fontWeight: "600" 
+  },
+
   footerText: {
     textAlign: "center",
     fontSize: 13,
     color: "#8b8480",
     marginTop: 24,
   },
-  link: { color: "#2d5a4f", fontWeight: "700" },
+
+  link: { 
+    color: "#2d5a4f", 
+    fontWeight: "700" 
+  },
 });

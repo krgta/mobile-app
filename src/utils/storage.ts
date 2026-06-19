@@ -19,7 +19,7 @@ export const storage = {
 
       async removeItem(key: string) {
             if (Platform.OS === "web") {
-              localStorage.removetItem(key);
+              localStorage.removeItem(key);
               return;
             }
             return SecureStorage.deleteItemAsync(key);
