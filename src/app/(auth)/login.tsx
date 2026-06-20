@@ -1,45 +1,54 @@
-import { colors } from "@/constants/colors";
-import { useAuthStore } from "@/store/authStore";
-import { Ionicons } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
-import { useState } from "react";
-import { ActivityIndicator, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { colors } from '@/constants/colors';
+import { useAuthStore } from '@/store/authStore';
+import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
+import { useState } from 'react';
+import {
+  ActivityIndicator,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 export default function LoginScreen() {
-
   const router = useRouter();
   const login = useAuthStore((s) => s.login);
 
-  const[email, setEmail] = useState("");
-  const[password, setPassword] = useState("");
-  const[showPassword, setShowPassword] = useState(false);
-  const[error, setError] = useState("");
-  const[isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const[emailFocused, setEmailFocused] = useState(false);
-  const[passwordFocused, setPasswordFocused] = useState(false);
+  const [emailFocused, setEmailFocused] = useState(false);
+  const [passwordFocused, setPasswordFocused] = useState(false);
 
   async function handleSubmit() {
-    if(!email || !password) {
-      setError("Please enter email and password.");
+    if (!email || !password) {
+      setError('Please enter email and password.');
     }
-    setError("");
+    setError('');
     setIsLoading(true);
     try {
       await login(email, password);
-      router.replace("/(app)/dashboard");
-    }
-    catch(err: unknown) {
-      setError(err instanceof Error ? err.message : "Invalid email or password.");
-    }
-    finally {
+      router.replace('/(app)/dashboard');
+    } catch (err: unknown) {
+      setError(
+        err instanceof Error ? err.message : 'Invalid email or password.',
+      );
+    } finally {
       setIsLoading(false);
     }
   }
 
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.keyboardView}
     >
       <ScrollView contentContainerStyle={styles.scroll}>
@@ -72,7 +81,7 @@ export default function LoginScreen() {
               <View style={styles.labelRow}>
                 <Text style={styles.label}>Password</Text>
                 <TouchableOpacity
-                  onPress={() => router.push("/(auth)/forgot-password")}
+                  onPress={() => router.push('/(auth)/forgot-password')}
                 >
                   <Text style={styles.forgotPassword}>Forgot Password</Text>
                 </TouchableOpacity>
@@ -100,7 +109,7 @@ export default function LoginScreen() {
                   hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
                 >
                   <Ionicons
-                    name={showPassword ? "eye-off" : "eye"}
+                    name={showPassword ? 'eye-off' : 'eye'}
                     size={20}
                     color={colors.textMuted}
                   />
@@ -126,7 +135,7 @@ export default function LoginScreen() {
               activeOpacity={0.8}
             >
               {isLoading ? (
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <ActivityIndicator color="#fff" style={{ marginRight: 8 }} />
                   <Text style={styles.submitButtonText}>Signing In...</Text>
                 </View>
@@ -151,8 +160,8 @@ export default function LoginScreen() {
 
             {/* Footer link */}
             <View style={styles.footer}>
-              <Text style={styles.footerText}>Don't have an account? </Text>
-              <TouchableOpacity onPress={() => router.push("/(auth)/signup")}>
+              <Text style={styles.footerText}>Don&apost have an account? </Text>
+              <TouchableOpacity onPress={() => router.push('/(auth)/signup')}>
                 <Text style={styles.footerLink}>Sign up</Text>
               </TouchableOpacity>
             </View>
@@ -171,23 +180,23 @@ const styles = StyleSheet.create({
 
   scroll: {
     flexGrow: 1,
-    justifyContent: "center",
+    justifyContent: 'center',
     padding: 20,
   },
 
   container: {
-    width: "100%",
+    width: '100%',
     maxWidth: 420,
-    alignSelf: "center",
+    alignSelf: 'center',
   },
 
   card: {
     backgroundColor: colors.white,
     borderRadius: 24,
     borderWidth: 1,
-    borderColor: "rgba(232, 229, 224, 0.4)",
+    borderColor: 'rgba(232, 229, 224, 0.4)',
     padding: 32,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.12,
     shadowRadius: 24,
@@ -195,13 +204,13 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    alignItems: "center",
+    alignItems: 'center',
     marginBottom: 32,
   },
 
   title: {
     fontSize: 28,
-    fontWeight: "700",
+    fontWeight: '700',
     letterSpacing: -0.5,
     marginBottom: 8,
     color: colors.textPrimary,
@@ -218,14 +227,14 @@ const styles = StyleSheet.create({
   },
 
   labelRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 
   label: {
     fontSize: 14,
-    fontWeight: "500",
+    fontWeight: '500',
     color: colors.textPrimary,
   },
 
@@ -236,9 +245,9 @@ const styles = StyleSheet.create({
 
   input: {
     height: 48,
-    backgroundColor: "rgba(245, 243, 240, 0.5)",
+    backgroundColor: 'rgba(245, 243, 240, 0.5)',
     borderWidth: 1,
-    borderColor: "rgba(232, 229, 224, 0.6)",
+    borderColor: 'rgba(232, 229, 224, 0.6)',
     borderRadius: 999,
     paddingHorizontal: 16,
     fontSize: 14,
@@ -251,8 +260,8 @@ const styles = StyleSheet.create({
   },
 
   passwordWrapper: {
-    position: "relative",
-    justifyContent: "center",
+    position: 'relative',
+    justifyContent: 'center',
   },
 
   passwordInput: {
@@ -260,31 +269,31 @@ const styles = StyleSheet.create({
   },
 
   eyeButton: {
-    position: "absolute",
+    position: 'absolute',
     right: 14,
   },
 
   errorBox: {
     padding: 12,
-    backgroundColor: "rgba(127, 29, 29, 0.1)",
+    backgroundColor: 'rgba(127, 29, 29, 0.1)',
     borderWidth: 1,
-    borderColor: "rgba(127, 29, 29, 0.2)",
+    borderColor: 'rgba(127, 29, 29, 0.2)',
     borderRadius: 8,
     marginBottom: 16,
   },
 
   errorText: {
     fontSize: 14,
-    color: "#f87171",
+    color: '#f87171',
   },
 
   submitButton: {
-    width: "100%",
+    width: '100%',
     height: 48,
     backgroundColor: colors.accentPrimary,
     borderRadius: 999,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   submitButtonDisabled: {
@@ -293,13 +302,13 @@ const styles = StyleSheet.create({
 
   submitButtonText: {
     fontSize: 16,
-    fontWeight: "500",
+    fontWeight: '500',
     color: colors.white,
   },
 
   dividerRow: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     marginVertical: 24,
     gap: 8,
   },
@@ -307,37 +316,37 @@ const styles = StyleSheet.create({
   dividerLine: {
     flex: 1,
     height: 1,
-    backgroundColor: "rgba(232, 229, 224, 0.4)",
+    backgroundColor: 'rgba(232, 229, 224, 0.4)',
   },
 
   dividerText: {
     fontSize: 10,
-    textTransform: "uppercase",
+    textTransform: 'uppercase',
     color: colors.textMuted,
     letterSpacing: 0.5,
   },
 
   googleButton: {
-    width: "100%",
+    width: '100%',
     height: 48,
     borderRadius: 999,
     borderWidth: 1,
     borderColor: colors.border,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: colors.white,
   },
 
   googleButtonText: {
     fontSize: 14,
-    fontWeight: "500",
+    fontWeight: '500',
     color: colors.textPrimary,
   },
 
   footer: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginTop: 32,
   },
 
@@ -349,6 +358,6 @@ const styles = StyleSheet.create({
   footerLink: {
     fontSize: 14,
     color: colors.accentPrimary,
-    fontWeight: "600",
+    fontWeight: '600',
   },
 });
