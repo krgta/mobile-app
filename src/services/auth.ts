@@ -1,7 +1,7 @@
-import { api } from '@/api/api';
+import { api } from '@/lib/api';
 
-import { User } from '@/types/user';
 import { AuthResponse, TokenResponse } from '@/types/auth';
+import { User } from '@/types/user';
 
 export async function login(
   email: string,

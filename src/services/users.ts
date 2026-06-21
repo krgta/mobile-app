@@ -1,4 +1,4 @@
-import { api } from '@/api/api';
+import { api } from '@/lib/api';
 import type { User } from '@/types/user';
 
 export interface UpdatedUser {

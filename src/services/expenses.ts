@@ -1,9 +1,9 @@
-import { api } from '@/api/api';
+import { api } from '@/lib/api';
 import type {
-  ApiResponse,
-  PersonalExpense,
-  PersonalExpenseCreate,
-  PersonalExpenseUpdate,
+      ApiResponse,
+      PersonalExpense,
+      PersonalExpenseCreate,
+      PersonalExpenseUpdate,
 } from '@/types';
 
 export async function getPersonalExpenses(): Promise<PersonalExpense[]> {

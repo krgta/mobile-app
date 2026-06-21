@@ -1,16 +1,16 @@
-import { api } from '@/api/api';
+import { api } from '@/lib/api';
 import {
-  ApiResponse,
-  ExpenseSplit,
-  Group,
-  GroupBalances,
-  GroupDebtBreakdown,
-  GroupExpense,
-  GroupExpenseCreate,
-  GroupExpenseUpdate,
-  GroupMember,
-  Settlement,
-  SettlementCreate,
+      ApiResponse,
+      ExpenseSplit,
+      Group,
+      GroupBalances,
+      GroupDebtBreakdown,
+      GroupExpense,
+      GroupExpenseCreate,
+      GroupExpenseUpdate,
+      GroupMember,
+      Settlement,
+      SettlementCreate,
 } from '@/types';
 
 export async function getGroups(): Promise<Group[]> {
