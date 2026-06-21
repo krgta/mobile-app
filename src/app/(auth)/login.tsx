@@ -31,6 +31,7 @@ export default function LoginScreen() {
   async function handleSubmit() {
     if (!email || !password) {
       setError('Please enter email and password.');
+      return;
     }
     setError('');
     setIsLoading(true);
