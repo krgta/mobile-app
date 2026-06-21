@@ -5,6 +5,7 @@ export const colors = {
   textPrimary: '#1a1816', // --evven-text-primary
   textMuted: '#8b8480', // --evven-text-muted
   accentPrimary: '#2d5a4f', // --evven-accent-primary
+  accentSecondary: '#e8dcc8', // --evven-accent-secondary
   error: '#c0392b', // --evven-error
   white: '#ffffff',
 };
