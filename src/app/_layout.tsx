@@ -2,7 +2,7 @@ import { useAuthStore } from '@/store/authStore';
 import { Slot, useRouter, useSegments } from 'expo-router';
 import { useEffect } from 'react';
 import { ActivityIndicator, View } from 'react-native';
-import "@/global.css"
+import '@/global.css';
 
 export default function RootLayout() {
   const restoreSession = useAuthStore((s) => s.restoreSession);
