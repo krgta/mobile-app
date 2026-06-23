@@ -2,6 +2,7 @@ import { useAuthStore } from '@/store/authStore';
 import { Slot, useRouter, useSegments } from 'expo-router';
 import { useEffect } from 'react';
 import { ActivityIndicator, View } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import '@/global.css';
 
 export default function RootLayout() {
@@ -45,5 +46,9 @@ export default function RootLayout() {
     );
   }
 
-  return <Slot />;
+  return (
+    <SafeAreaProvider>
+      <Slot />;
+    </SafeAreaProvider>
+  );
 }

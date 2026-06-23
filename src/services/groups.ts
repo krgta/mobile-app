@@ -77,7 +77,7 @@ export async function getGroupExpenses(
   return response.data.data;
 }
 
-export async function createGroupExpenses(
+export async function createGroupExpense(
   groupId: string,
   expenseData: GroupExpenseCreate,
 ): Promise<GroupExpense> {
@@ -88,7 +88,7 @@ export async function createGroupExpenses(
   return response.data.data;
 }
 
-export async function updateGroupExpenses(
+export async function updateGroupExpense(
   groupId: string,
   expenseId: string,
   expenseData: GroupExpenseUpdate,
@@ -100,7 +100,7 @@ export async function updateGroupExpenses(
   return response.data.data;
 }
 
-export async function deleteGroupExpenses(
+export async function deleteGroupExpense(
   groupId: string,
   expenseId: string,
 ): Promise<void> {
