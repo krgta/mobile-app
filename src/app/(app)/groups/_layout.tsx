@@ -20,7 +20,7 @@ export default function GroupLayout() {
         name="[group_id]"
         options={{
           title: 'Group',
-          headerShown: true,
+          headerShown: false,
         }}
       />
     </Stack>

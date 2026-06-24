@@ -20,8 +20,17 @@ export default function ExpensesLayout() {
         name="new"
         options={{
           title: 'Add Expense',
-          headerShown: true,
           presentation: 'modal',
+          headerShown: false,
+        }}
+      />
+
+      <Stack.Screen
+        name="[expense_id]/edit"
+        options={{
+          title: 'Edit Expense',
+          presentation: 'modal',
+          headerShown: false,
         }}
       />
     </Stack>

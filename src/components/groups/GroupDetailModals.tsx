@@ -35,7 +35,7 @@ function ModalShell({
       transparent
       animationType="fade"
       onRequestClose={onClose}
-      statusBarTranslucent // Android
+      statusBarTranslucent
       hardwareAccelerated
     >
       <KeyboardAvoidingView
