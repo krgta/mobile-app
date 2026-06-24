@@ -17,7 +17,8 @@
         "backgroundImage": "./assets/Img/EvenUp-black.png",
         "monochromeImage": "./assets/Img/EvenUp-black.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "softwareKeyboardLayoutMode": "resize"
     },
     "web": {
       "output": "static",

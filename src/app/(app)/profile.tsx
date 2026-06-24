@@ -19,6 +19,7 @@ import {
 import { colors } from '@/constants/colors';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 function getInitials(name: string) {
   return name
@@ -106,9 +107,11 @@ function ProfileEditor({
   }
 
   return (
-    <ScrollView
+    <KeyboardAwareScrollView
       style={styles.scrollView}
       contentContainerStyle={styles.scroll}
+      enableOnAndroid
+      extraScrollHeight={40}
       keyboardShouldPersistTaps="handled"
     >
       <View style={styles.pageHeader}>
@@ -167,71 +170,73 @@ function ProfileEditor({
           </Text>
         </TouchableOpacity>
       </View>
-      <KeyboardAvoidingView 
+      <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         className="flex-1"
       >
-        <View style={styles.card}>
-          <Text style={styles.formTitle}>Edit Profile</Text>
-          <View style={styles.fieldGroup}>
-            <Text style={styles.fieldLabel}>Name</Text>
-            <TextInput
-              style={[styles.input, nameFocused && styles.inputFocused]}
-              value={name}
-              onChangeText={setName}
-              autoCapitalize="words"
-              autoCorrect={false}
-              onFocus={() => setNameFocused(true)}
-              onBlur={() => setNameFocused(false)}
-            />
+        <ScrollView>
+          <View style={styles.card}>
+            <Text style={styles.formTitle}>Edit Profile</Text>
+            <View style={styles.fieldGroup}>
+              <Text style={styles.fieldLabel}>Name</Text>
+              <TextInput
+                style={[styles.input, nameFocused && styles.inputFocused]}
+                value={name}
+                onChangeText={setName}
+                autoCapitalize="words"
+                autoCorrect={false}
+                onFocus={() => setNameFocused(true)}
+                onBlur={() => setNameFocused(false)}
+              />
+            </View>
+
+            <View style={styles.fieldGroup}>
+              <Text style={styles.fieldLabel}>Profile picture URL</Text>
+              <TextInput
+                style={[styles.input, picFocused && styles.inputFocused]}
+                value={profilePicture}
+                onChangeText={setProfilePicture}
+                placeholder="https://..."
+                placeholderTextColor={colors.textMuted}
+                keyboardType="url"
+                autoCapitalize="none"
+                autoCorrect={false}
+                onFocus={() => setPicFocused(true)}
+                onBlur={() => setPicFocused(false)}
+              />
+            </View>
+            {message ? (
+              <Text style={styles.successMessage}>{message}</Text>
+            ) : null}
+
+            {error ? <Text style={styles.errorMessage}>{error}</Text> : null}
+
+            <TouchableOpacity
+              style={[
+                styles.saveButton,
+                (saving || !name.trim()) && styles.saveButtonDisabled,
+              ]}
+              onPress={handleSubmit}
+              disabled={saving || !name.trim()}
+              activeOpacity={0.8}
+            >
+              {saving ? (
+                <ActivityIndicator color={colors.white} />
+              ) : (
+                <Text style={styles.saveButtonText}>Save changes</Text>
+              )}
+            </TouchableOpacity>
           </View>
-
-          <View style={styles.fieldGroup}>
-            <Text style={styles.fieldLabel}>Profile picture URL</Text>
-            <TextInput
-              style={[styles.input, picFocused && styles.inputFocused]}
-              value={profilePicture}
-              onChangeText={setProfilePicture}
-              placeholder="https://..."
-              placeholderTextColor={colors.textMuted}
-              keyboardType="url"
-              autoCapitalize="none"
-              autoCorrect={false}
-              onFocus={() => setPicFocused(true)}
-              onBlur={() => setPicFocused(false)}
-            />
-          </View>
-          {message ? (
-            <Text style={styles.successMessage}>{message}</Text>
-          ) : null}
-
-          {error ? <Text style={styles.errorMessage}>{error}</Text> : null}
-
-          <TouchableOpacity
-            style={[
-              styles.saveButton,
-              (saving || !name.trim()) && styles.saveButtonDisabled,
-            ]}
-            onPress={handleSubmit}
-            disabled={saving || !name.trim()}
-            activeOpacity={0.8}
-          >
-            {saving ? (
-              <ActivityIndicator color={colors.white} />
-            ) : (
-              <Text style={styles.saveButtonText}>Save changes</Text>
-            )}
-          </TouchableOpacity>
-        </View>
-      </KeyboardAvoidingView>
+        </ScrollView>
+        </KeyboardAvoidingView>
       <TouchableOpacity
         style={styles.logoutButton}
         onPress={handleLogout}
         activeOpacity={0.7}
-      >
-        <Text style={styles.logoutText}>Log out</Text>
+        >
+        <Text style={styles.logoutText}>Logout</Text>
       </TouchableOpacity>
-    </ScrollView>
+    </KeyboardAwareScrollView>
   );
 }
 

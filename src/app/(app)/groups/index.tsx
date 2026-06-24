@@ -211,7 +211,6 @@ export default function GroupsScreen() {
               <TouchableOpacity
                 className="absolute top-4 right-4 p-1.5 rounded-lg bg-[#f5f3f0]"
                 onPress={() => {
-                  console.log('Clicked');
                   setShowCreate(false);
                 }}
               >
